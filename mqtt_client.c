@@ -839,6 +839,7 @@ static void esp_mqtt_task(void *pv)
 
                 if (!client->config->auto_reconnect) {
                     client->run = false;
+                    client->state = MQTT_STATE_UNKNOWN;
                     break;
                 }
                 if (platform_tick_get_ms() - client->reconnect_tick > client->wait_timeout_ms) {
